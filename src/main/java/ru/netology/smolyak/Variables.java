@@ -15,7 +15,7 @@ public class Variables {
         // сумма по операции
         short Region = scanner.nextShort(); // регион деятельности клиента
 
-        String OperName = scanner.nextLine(); // Наименование операции
+        String OperaName = scanner.nextLine(); // Наименование операции
 
         char countryCode; // код страны операции
         String Inn; // Инн пользователя
@@ -28,5 +28,7 @@ public class Variables {
 
 
         Date date = new Date(); // дата транзакции
+
+        System.out.printf("%d %d %f %d %s", OperNumber, UserId, MoneyAmount, Region, OperaName);
     }
 }
