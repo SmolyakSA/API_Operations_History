@@ -1,5 +1,6 @@
 package ru.netology.smolyak;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import java.util.Date;
@@ -17,17 +18,19 @@ public class Variables {
 
         boolean operSucsess; // индикатор успешности операции (ноль или единица).
 
-        int OperaNumber; // Номер операции
+        int[] OperaNumber = new int[5]; // Номер операции
 
-        int UserId; // Номер пользователя
+        int[] UserId = new int[5]; // Номер пользователя
 
-        float MoneyAmount;   // сумма по операции
+        float[] MoneyAmount = new float[5];   // сумма по операции
 
-        String OperaName;  // Наименование операции
+        String[] OperaName = new String[5];  // Наименование операции
 
-        short Region;  // регион деятельности клиента
+        short[] Region = new short[5];  // регион деятельности клиента
 
-        Date date = new Date(); // дата транзакции
+        Date[] date; // дата транзакции
+
+        int[] FalseDate = new int[2]; // Todo  cделать тоже самое с датами
 
         int i = 0;
 
@@ -37,33 +40,51 @@ public class Variables {
             System.out.print("Введите номер операции");
 
 
-            OperaNumber = scanner.nextInt();
+            OperaNumber[i-1] = scanner.nextInt();
 
 
             System.out.println("Введите Номер пользователя");
 
-            UserId = scanner.nextInt();
+            UserId[i-1] = scanner.nextInt();
 
 
             System.out.println("Введите сумма по операции");
 
 
-            MoneyAmount = scanner.nextFloat();
+            MoneyAmount[i-1] = scanner.nextFloat();
 
 
             System.out.println(" Введите регион деятельности клиента");
 
-            Region = scanner.nextShort();
+            Region[i-1] = scanner.nextShort();
 
             System.out.println("Введите Название операции");
 
-            OperaName = scanner.nextLine();
+            OperaName[i-1] = scanner.nextLine();
 
-            System.out.printf("%d %d %f %d %s", OperaNumber, UserId, MoneyAmount, Region, OperaName);
+            System.out.println(Arrays.toString(new int[]{OperaNumber[i-1], Region[i-1]}));
 
-            if (i > 3) break;
+            if (i > 2) break;
 
         }
+
+        System.out.println("Введите начальную дату операции");
+
+        FalseDate[0] = scanner.nextInt();// Todo сделать ввод даты
+
+        System.out.println("Введите конечную дату операции");
+
+        FalseDate[1] = scanner.nextInt(); // Todo сделать ввод даты
+
+
+        /* while (дата нач <= дата массива => дата конца)
+        *
+        *
+        *
+        *
+        * */
+
+
 
     }
 
