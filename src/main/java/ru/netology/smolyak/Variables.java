@@ -1,5 +1,6 @@
 package ru.netology.smolyak;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -28,16 +29,22 @@ public class Variables {
 
         short[] Region = new short[5];  // регион деятельности клиента
 
-        Date[] date; // дата транзакции
+        String[] StringDate = new String[5]; // дата транзакции
 
         int[] FalseDate = new int[2]; // Todo  cделать тоже самое с датами
+
+        // Определяем формат, который хотим использовать
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        // Форматируем дату и выводим результат
+
 
         int i = 0;
 
         while (true) {
             i += 1;
 
-            System.out.print("Введите номер операции");
+            System.out.println("Введите номер операции");
 
 
             OperaNumber[i-1] = scanner.nextInt();
@@ -62,21 +69,36 @@ public class Variables {
 
             OperaName[i-1] = scanner.nextLine();
 
-            System.out.println(Arrays.toString(new int[]{OperaNumber[i-1], Region[i-1]}));
+            StringDate[i-1] = scanner.nextLine();
 
-            if (i > 2) break;
+            if (i == 2) break;
 
         }
 
         System.out.println("Введите начальную дату операции");
 
-        FalseDate[0] = scanner.nextInt();// Todo сделать ввод даты
+        var d1 = scanner.nextInt();
 
         System.out.println("Введите конечную дату операции");
 
-        FalseDate[1] = scanner.nextInt(); // Todo сделать ввод даты
+        var d2= scanner.nextInt();
 
+        //while(true) {
+        //     j++;
+        //     if ((d1 <= OperaNumber[i - 1]) && d2 <= OperaNumber[i-1]) {
+        //         System.out.print("Номер операции:" + OperaNumber[i-1] + ",");
+        //         System.out.print("Идентификатор пользователя:" + UserId[i-1] + ",");
+        //     }
+        // }
 
+        for (int j : OperaNumber) {
+            if (d1 == OperaNumber[0]) {
+
+                System.out.print("Номер операции:" + OperaNumber[i-1] + ",");
+                System.out.print("Идентификатор пользователя:" + UserId[i-1] + ",");
+               break;
+            }
+        }
         /* while (дата нач <= дата массива => дата конца)
         *
         *
