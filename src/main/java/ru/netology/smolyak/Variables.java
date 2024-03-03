@@ -1,6 +1,7 @@
 package ru.netology.smolyak;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class Variables {
         int[] FalseDate = new int[2]; // Todo  cделать тоже самое с датами
 
         // Определяем формат, который хотим использовать
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         // Форматируем дату и выводим результат
 
@@ -43,6 +44,10 @@ public class Variables {
 
         while (true) {
             i += 1;
+
+            System.out.println("Введите дату операции");
+
+            StringDate[i-1] = scanner.nextLine();
 
             System.out.println("Введите номер операции");
 
@@ -69,19 +74,23 @@ public class Variables {
 
             OperaName[i-1] = scanner.nextLine();
 
-            StringDate[i-1] = scanner.nextLine();
+
 
             if (i == 2) break;
 
         }
-
         System.out.println("Введите начальную дату операции");
 
-        var d1 = scanner.nextInt();
+        var d1 = scanner.nextLine();
+
+        LocalDate DateStart = LocalDate.parse(d1);
 
         System.out.println("Введите конечную дату операции");
 
-        var d2= scanner.nextInt();
+        var d2= scanner.nextLine();
+
+        LocalDate DateEnd = LocalDate.parse(d2);
+
 
         //while(true) {
         //     j++;
@@ -91,21 +100,17 @@ public class Variables {
         //     }
         // }
 
-        for (int j : OperaNumber) {
-            if (d1 == OperaNumber[0]) {
+        for (int j = 0; j < OperaNumber.length;) {
+            boolean CheckDate = DateEnd.isBefore(LocalDate.parse(StringDate[j]));
 
-                System.out.print("Номер операции:" + OperaNumber[i-1] + ",");
-                System.out.print("Идентификатор пользователя:" + UserId[i-1] + ",");
-               break;
+            if (CheckDate == true){
+                System.out.println("----------------------------------------");
+                System.out.print("Номер операции:" + OperaNumber[j] + ",");
+                System.out.println("Идентификатор пользователя:" + UserId[j] + ",");
+                System.out.println("----------------------------------------");
             }
+            j++;
         }
-        /* while (дата нач <= дата массива => дата конца)
-        *
-        *
-        *
-        *
-        * */
-
 
 
     }
