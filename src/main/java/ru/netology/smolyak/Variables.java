@@ -1,14 +1,15 @@
 package ru.netology.smolyak;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.Scanner;
 
-import java.util.Date;
+import static java.time.LocalDate.parse;
 
 public class Variables {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner scanner = new Scanner(System.in);
 
         char countryCode; // код страны операции
@@ -30,17 +31,10 @@ public class Variables {
 
         short[] Region = new short[5];  // регион деятельности клиента
 
-        String[] StringDate = new String[5]; // дата транзакции
-
-        int[] FalseDate = new int[2]; // Todo  cделать тоже самое с датами
-
-        // Определяем формат, который хотим использовать
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-
-        // Форматируем дату и выводим результат
-
-
         int i = 0;
+
+        // дата транзакции
+        String[] StringDate = new String[5];
 
         while (true) {
             i += 1;
@@ -49,11 +43,12 @@ public class Variables {
 
             StringDate[i-1] = scanner.nextLine();
 
-            System.out.println("Введите номер операции");
 
+            System.out.println("Введите номер операции");
 
             OperaNumber[i-1] = scanner.nextInt();
 
+            System.out.println("---------");
 
             System.out.println("Введите Номер пользователя");
 
@@ -74,42 +69,39 @@ public class Variables {
 
             OperaName[i-1] = scanner.nextLine();
 
-
-
-            if (i == 2) break;
-
+            if(i == 3){break;}
         }
-        System.out.println("Введите начальную дату операции");
+        System.out.println("Задайте период поиска: Введите начальную дату");
 
-        var d1 = scanner.nextLine();
+        String d1 = scanner.nextLine();
 
-        LocalDate DateStart = LocalDate.parse(d1);
+        Date DateStart = new SimpleDateFormat("dd.MM.yyyy").parse(d1);
 
-        System.out.println("Введите конечную дату операции");
+        System.out.println("Введите конечную дату");
 
-        var d2= scanner.nextLine();
+        String d2= scanner.nextLine();
 
-        LocalDate DateEnd = LocalDate.parse(d2);
+        Date DateEnd = new SimpleDateFormat("dd.MM.yyyy").parse(d2);
 
 
-        //while(true) {
-        //     j++;
-        //     if ((d1 <= OperaNumber[i - 1]) && d2 <= OperaNumber[i-1]) {
-        //         System.out.print("Номер операции:" + OperaNumber[i-1] + ",");
-        //         System.out.print("Идентификатор пользователя:" + UserId[i-1] + ",");
-        //     }
-        // }
+        for (int j = 0; j < OperaNumber.length; j++) {
 
-        for (int j = 0; j < OperaNumber.length;) {
-            boolean CheckDate = DateEnd.isBefore(LocalDate.parse(StringDate[j]));
+            if(OperaNumber[j] == 0){break;};
+
+            Date DateComp = new SimpleDateFormat("dd.MM.yyyy").parse(StringDate[j]);
+            boolean CheckDate = (DateStart.before(DateComp) || DateStart.equals(DateComp)) &&
+                    (DateEnd.after(DateComp) || DateEnd.equals(DateComp));
+
 
             if (CheckDate == true){
                 System.out.println("----------------------------------------");
                 System.out.print("Номер операции:" + OperaNumber[j] + ",");
-                System.out.println("Идентификатор пользователя:" + UserId[j] + ",");
+                System.out.print("Идентификатор пользователя:" + UserId[j] + ",");
+                System.out.print("Дата операции:" + StringDate[j] + ",");
+                System.out.println("Сумма операции:" + MoneyAmount[j] + ".");
                 System.out.println("----------------------------------------");
+
             }
-            j++;
         }
 
 
