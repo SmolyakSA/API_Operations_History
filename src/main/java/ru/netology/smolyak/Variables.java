@@ -65,7 +65,7 @@ public class Variables {
 
             Region[i-1] = scanner.nextShort();
 
-            System.out.println("Введите Название операции");
+            System.out.println("Введите название операции");
 
             OperaName[i-1] = scanner.nextLine();
 
