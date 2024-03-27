@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class Main {
 
     public static Scanner scanner = new Scanner(System.in);
-    public static int[][] statement = new int[1000][2];
-    public Operation[] operations;
+    public static int[][] statement = new int[1000][1000];
+
     public Customer[] customers = new Customer[1000];
     public static void main(String[] args) {
 
@@ -16,7 +16,9 @@ public class Main {
         int i = 0;
         while (true) {
             System.out.println("Введите данные по клиентам через пробел: customerId, String customerName, int birthY, short region");
-            Customer customers[] = {new Customer(scanner.nextInt(), scanner.nextLine(), scanner.nextInt(), scanner.nextShort())};
+            Customer customers[] =
+
+                    {new Customer(scanner.nextInt(), scanner.nextLine(), scanner.nextInt(), scanner.nextShort())};
             System.out.print("ведите в консоль 0, если хотите прервать заполнение данных, введите 1, если хотите продолжить");
             int proceed = scanner.nextInt();
             if (proceed == 0) {
@@ -47,6 +49,7 @@ public class Main {
             j = +1;
         }
 
+        Operation.getOperations();
 //     Operation operation1 = new Operation(1, 234534, "поступление ЗП", "13.03.2024");
 //     Operation operation2 = new Operation(1, 434, "Перевод онлайн", "13.03.2024");
 //     Operation operation3 = new Operation(2, -132564, "Покупка онлайн", "15.03.2024");
