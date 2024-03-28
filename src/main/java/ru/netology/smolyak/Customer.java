@@ -1,5 +1,9 @@
 package ru.netology.smolyak;
 
+import java.util.InputMismatchException;
+
+import static ru.netology.smolyak.Main.scanner;
+
 public class Customer {
     private String customerName;
 
@@ -9,7 +13,7 @@ public class Customer {
 
     private int customerId;
 
-
+    public static Customer[] customers = new Customer[1000];
 
 
 
@@ -65,19 +69,24 @@ public class Customer {
     }
 
 
+    public void saveCustomer() {
+        try {
+            int i = 0;
+            while (true) {
+                System.out.println("Введите данные по клиентам через пробел: customerId, String customerName, int birthY, short region");
+                Customer customers[] =
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                        {new Customer(scanner.nextInt(), scanner.nextLine(), scanner.nextInt(), scanner.nextShort())};
+                System.out.print("ведите в консоль 0, если хотите прервать заполнение данных, введите 1, если хотите продолжить");
+                int proceed = scanner.nextInt();
+                if (proceed == 0) {
+                    break;
+                }
+                i = +1;
+            }
+        } catch (InputMismatchException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
+
