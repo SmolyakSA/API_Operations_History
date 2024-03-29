@@ -1,12 +1,11 @@
 package ru.netology.smolyak;
 
-import java.util.InputMismatchException;
-
-import static ru.netology.smolyak.Customer.customers;
-import static ru.netology.smolyak.Main.scanner;
 import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Operation implements ConsolePrintable, Serializable{
+import static ru.netology.smolyak.Main.scanner;
+
+public class Operation extends ArrayList<Operation> implements ConsolePrintable, Serializable{
 
    private int id;
 
@@ -36,7 +35,7 @@ public class Operation implements ConsolePrintable, Serializable{
           } // конструктор пустой
 
     public String toString(){
-       return "Employee [id операции:" + id
+       return "Операция [id операции:" + id
                 + ", Размер операции:"+ amount
                 + ", Название операции:" + name
                 + ", Дата операции:" + date + "]";

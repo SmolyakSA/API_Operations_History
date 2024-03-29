@@ -1,12 +1,13 @@
 package ru.netology.smolyak;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StatementService {
+public class StatementService <T>{
 
-    private final Map<Integer, List<Operation>> storage = new HashMap<>();
+    public static final Map<Integer, List<Operation>> storage = new HashMap<>();
 
     public StatementService() {
     }

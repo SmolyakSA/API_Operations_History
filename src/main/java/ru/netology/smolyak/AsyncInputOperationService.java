@@ -5,13 +5,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import static ru.netology.smolyak.Main.scanner;
+import static ru.netology.smolyak.OperationService.*;
 
 public class AsyncInputOperationService {
 
-    private Queue<Operation> queue = new LinkedList<>();
+    private static Queue<Operation> queue = new LinkedList<>();
 
 
-    public boolean offerOperation() throws InputMismatchException{
+    public static boolean offerOperation() throws InputMismatchException{
 
         int j = 0;
 
