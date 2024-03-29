@@ -1,10 +1,11 @@
 package ru.netology.smolyak;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 
 import static ru.netology.smolyak.Main.scanner;
 
-public class Customer {
+public class Customer implements Serializable {
     private String customerName;
 
     private int birthY;

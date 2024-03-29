@@ -3,10 +3,10 @@ package ru.netology.smolyak;
 import java.util.InputMismatchException;
 
 import static ru.netology.smolyak.Customer.customers;
-import static ru.netology.smolyak.Main.customer;
 import static ru.netology.smolyak.Main.scanner;
+import java.io.Serializable;
 
-public class Operation implements ConsolePrintable{
+public class Operation implements ConsolePrintable, Serializable{
 
    private int id;
 
@@ -74,7 +74,7 @@ public class Operation implements ConsolePrintable{
         this.date = date;
     }
 
-    public void print(){
+    public void print(){   //поиск операций по Id клиента
         while (true) {
             System.out.println("Введите сквозной номер операции для вывода информации о ней");
             int number = scanner.nextInt();
@@ -108,35 +108,35 @@ while (statement[clientId][k] == 0){
 
     }
 
-    public static void saveStatement() throws CustomerOperationOutOfBoundException {
-    int j = 0;
-
-        while (true) {
-            try {
-                System.out.print("Введите id пользователя");
-                indexCustomerNumber = scanner.nextInt();
-                {
-                    System.out.println("Пльзователь отсутвует, пожалуйста создайте его");
-                    System.out.println("Введите данные по клиентам через пробел: customerId, String customerName, int birthY, short region");
-                    Customer customers[] = {new Customer(scanner.nextInt(), scanner.nextLine(), scanner.nextInt(), scanner.nextShort())};
-                }
-                ;
-                System.out.print("Введите порядковый номер операции");
-                indexOperationNumber = scanner.nextInt();
-                System.out.println("Введите данные по операциям клиентов через пробел: int id, long amount, String name, String date");
-                Operation operations[] = {new Operation(scanner.nextInt(), scanner.nextLong(), scanner.nextLine(), scanner.nextLine())};
-                statement[indexCustomerNumber][indexOperationNumber] = operations[j].getId();
-                System.out.print("ведите в консоль 0, если хотите прервать заполнение данных, введите 1, если хотите продолжить");
-                int proceed = scanner.nextInt();
-                if (proceed == 0) {
-                    break;
-                }
-                j = +1;
-            }
-            catch (InputMismatchException e) {System.out.println("Введите неотрицательные числа");}
-            catch (ArrayIndexOutOfBoundsException e) {throw new CustomerOperationOutOfBoundException(indexCustomerNumber, indexOperationNumber);}
-        }
-    }
+//    public static void saveStatement() throws CustomerOperationOutOfBoundException {
+//    int j = 0;
+//
+//        while (true) {
+//            try {
+//                System.out.print("Введите id пользователя");
+//                indexCustomerNumber = scanner.nextInt();
+//                {
+//                    System.out.println("Пльзователь отсутвует, пожалуйста создайте его");
+//                    System.out.println("Введите данные по клиентам через пробел: customerId, String customerName, int birthY, short region");
+//                    Customer customers[] = {new Customer(scanner.nextInt(), scanner.nextLine(), scanner.nextInt(), scanner.nextShort())};
+//                }
+//                ;
+//                System.out.print("Введите порядковый номер операции");
+//                indexOperationNumber = scanner.nextInt();
+//                System.out.println("Введите данные по операциям клиентов через пробел: int id, long amount, String name, String date");
+//                Operation operations[] = {new Operation(scanner.nextInt(), scanner.nextLong(), scanner.nextLine(), scanner.nextLine())};
+//                statement[indexCustomerNumber][indexOperationNumber] = operations[j].getId();
+//                System.out.print("ведите в консоль 0, если хотите прервать заполнение данных, введите 1, если хотите продолжить");
+//                int proceed = scanner.nextInt();
+//                if (proceed == 0) {
+//                    break;
+//                }
+//                j = +1;
+//            }
+//            catch (InputMismatchException e) {System.out.println("Введите неотрицательные числа");}
+//            catch (ArrayIndexOutOfBoundsException e) {throw new CustomerOperationOutOfBoundException(indexCustomerNumber, indexOperationNumber);}
+//        }
+//    }
 
 
 }
