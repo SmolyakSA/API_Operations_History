@@ -16,7 +16,7 @@ public class OperationService {
 
     public static void addOperation(Operation operation){
 
-        System.out.println("Введите Id клиента");
+        System.out.println("Введите id клиента");
 
         int clientId = scanner.nextInt();
 
